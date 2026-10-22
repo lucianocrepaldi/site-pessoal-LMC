@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Luciano Mendes Crepaldi — Controladoria × Código</title>
+  <meta name="description" content="Luciano Mendes Crepaldi: Gerente de Contabilidade na Lee Hecht Harrison, Contador CRC-SP e desenvolvedor em formação (TypeScript, React, Node)." />
+  <meta property="og:title" content="Luciano Mendes Crepaldi — Controladoria × Código" />
+  <meta property="og:description" content="17 anos fechando balanços. Agora também fechando pull requests." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#07090d" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2307090d'/%3E%3Cpath d='M12 46 L26 30 L36 38 L52 18' stroke='%23ffb020' stroke-width='6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <!-- TICKER -->
+  <div class="ticker" aria-label="Indicadores">
+    <div class="ticker__track" id="tickerTrack">
+      <span><b>LMC</b> <i class="up">▲ 17 anos</i> em finanças</span>
+      <span><b>CRC-SP</b> <i class="up">● ativo</i> desde 2014</span>
+      <span><b>LHH</b> <i class="up">▲ 15a</i> de casa</span>
+      <span><b>GERÊNCIA</b> <i class="up">▲ 2020</i> → hoje</span>
+      <span><b>TS</b> <i class="up">▲</i> React · Next · Node</span>
+      <span><b>REPOS</b> <i class="up">▲ 14</i> públicos</span>
+      <span><b>D = C</b> <i class="up">✓</i> balanço fechado</span>
+      <span><b>BUGS</b> <i class="down">▼ 0,0%</i> em produção*</span>
+      <span><b>CAFÉ</b> <i class="up">▲ ∞</i> consumo diário</span>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <header class="nav" id="nav">
+    <a href="#topo" class="logo" aria-label="Início">LMC<span class="blink">_</span></a>
+    <nav class="nav__links" id="navLinks">
+      <a href="#balanco"><span>01</span>Balanço</a>
+      <a href="#razao"><span>02</span>Razão</a>
+      <a href="#lab"><span>03</span>Lab</a>
+      <a href="#console"><span>04</span>Console</a>
+      <a href="#contato"><span>05</span>Contato</a>
+    </nav>
+    <button class="nav__toggle" id="navToggle" aria-label="Abrir menu"><span></span><span></span></button>
+  </header>
+
+  <main id="topo">
+    <!-- HERO -->
+    <section class="hero">
+      <canvas id="chart" class="hero__chart" aria-hidden="true"></canvas>
+      <div class="hero__grid">
+        <div class="hero__text">
+          <p class="eyebrow"><span class="dot"></span> // controladoria × código</p>
+          <h1 class="hero__title" id="heroTitle">
+            <span class="line">Luciano</span>
+            <span class="line">Mendes <em>Crepaldi</em></span>
+          </h1>
+          <p class="hero__role">
+            <span class="prompt">&gt;</span> <span id="typed"></span><span class="caret"></span>
+          </p>
+          <p class="hero__lead">
+            Há 17 anos transformo lançamentos em informação confiável. Gerente de Contabilidade na
+            <strong>Lee Hecht Harrison</strong>, contador registrado no <strong>CRC-SP</strong> — e, nas horas
+            vagas, escrevendo apps em <strong>TypeScript</strong> para automatizar o que antes era planilha.
+          </p>
+          <div class="hero__cta">
+            <a href="#lab" class="btn btn--primary magnetic">Ver o Lab <span>→</span></a>
+            <a href="https://www.linkedin.com/in/luciano-mendes-05887730" target="_blank" rel="noopener" class="btn btn--ghost magnetic">LinkedIn</a>
+            <a href="https://github.com/lucianocrepaldi" target="_blank" rel="noopener" class="btn btn--ghost magnetic">GitHub</a>
+          </div>
+        </div>
+
+        <div class="terminal tilt" aria-label="Objeto luciano em código">
+          <div class="terminal__bar">
+            <i></i><i></i><i></i>
+            <span>luciano.config.ts</span>
+          </div>
+          <pre class="terminal__body"><code id="codeBlock"></code></pre>
+          <div class="terminal__foot">
+            <span class="ok">✓ compilado</span>
+            <span>débito === crédito</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="kpis">
+        <div class="kpi reveal">
+          <span class="kpi__label">Anos em finanças</span>
+          <span class="kpi__value"><b data-count="17">0</b>+</span>
+          <span class="kpi__delta up">▲ desde 2009</span>
+        </div>
+        <div class="kpi reveal">
+          <span class="kpi__label">Anos de LHH</span>
+          <span class="kpi__value"><b data-count="15">0</b></span>
+          <span class="kpi__delta up">▲ analista → gerente</span>
+        </div>
+        <div class="kpi reveal">
+          <span class="kpi__label">Registro profissional</span>
+          <span class="kpi__value">CRC<small>-SP</small></span>
+          <span class="kpi__delta up">● ativo desde 2014</span>
+        </div>
+        <div class="kpi reveal">
+          <span class="kpi__label">Repositórios públicos</span>
+          <span class="kpi__value"><b data-count="14">0</b></span>
+          <span class="kpi__delta up">▲ TS · JS · C++</span>
+        </div>
+      </div>
+      <a href="#balanco" class="scroll-hint" aria-label="Rolar">scroll <span></span></a>
+    </section>
+
+    <!-- BALANÇO -->
+    <section class="section" id="balanco">
+      <header class="section__head reveal">
+        <span class="section__num">01</span>
+        <h2>Balanço Patrimonial <em>de competências</em></h2>
+        <p>Posição em 31/12 de cada ano desde 2009. De um lado, o que sustenta a operação; do outro, o que está sendo construído. A barra mostra há quanto tempo cada competência está no ativo.</p>
+      </header>
+
+      <div class="ledger reveal">
+        <div class="ledger__col">
+          <div class="ledger__head"><span>ATIVO</span><span>Finanças & Controladoria</span></div>
+          <ul class="ledger__list">
+            <li data-since="2009"><span class="acc">1.1.01</span><span class="name">Faturamento</span><span class="bar"><i></i></span><span class="yr"></span></li>
+            <li data-since="2010"><span class="acc">1.1.02</span><span class="name">Rotinas &amp; obrigações fiscais</span><span class="bar"><i></i></span><span class="yr"></span></li>
+            <li data-since="2011"><span class="acc">1.1.03</span><span class="name">Fechamento contábil</span><span class="bar"><i></i></span><span class="yr"></span></li>
+            <li data-since="2011"><span class="acc">1.1.04</span><span class="name">Conciliações &amp; análise de contas</span><span class="bar"><i></i></span><span class="yr"></span></li>
+            <li data-since="2014"><span class="acc">1.2.01</span><span class="name">Contador habilitado (CRC-SP)</span><span class="bar"><i></i></span><span class="yr"></span></li>
+            <li data-since="2019"><span class="acc">1.2.02</span><span class="name">Gestão de equipe contábil</span><span class="bar"><i></i></span><span class="yr"></span></li>
+          </ul>
+          <div class="ledger__total"><span>Total do Ativo</span><span class="mono">sólido</span></div>
+        </div>
+
+        <div class="ledger__col">
+          <div class="ledger__head"><span>PASSIVO + PL</span><span>Desenvolvimento</span></div>
+          <ul class="ledger__list ledger__list--dev">
+            <li data-since="2024"><span class="acc">2.1.01</span><span class="name">HTML5 &amp; CSS3</span><span class="bar"><i></i></span><span class="yr"></span></li>
+            <li data-since="2024"><span class="acc">2.1.02</span><span class="name">JavaScript</span><span class="bar"><i></i></span><span class="yr"></span></li>
+            <li data-since="2025"><span class="acc">2.1.03</span><span class="name">TypeScript</span><span class="bar"><i></i></span><span class="yr"></span></li>
+            <li data-since="2025"><span class="acc">2.1.04</span><span class="name">React · Next.js · Mobile</span><span class="bar"><i></i></span><span class="yr"></span></li>
+            <li data-since="2025"><span class="acc">2.2.01</span><span class="name">C++ &amp; Arduino (embarcados)</span><span class="bar"><i></i></span><span class="yr"></span></li>
+            <li data-since="2026"><span class="acc">2.3.01</span><span class="name">APIs &amp; back-end Node</span><span class="bar"><i></i></span><span class="yr"></span></li>
+          </ul>
+          <div class="ledger__total"><span>Total Passivo + PL</span><span class="mono">em expansão</span></div>
+        </div>
+      </div>
+      <p class="ledger__check reveal"><span class="ok">✓</span> Ativo = Passivo + PL &nbsp;·&nbsp; <span class="mono">assert(balanco.fechado)</span> passou</p>
+    </section>
+
+    <!-- RAZÃO -->
+    <section class="section" id="razao">
+      <header class="section__head reveal">
+        <span class="section__num">02</span>
+        <h2>Livro Razão <em>da carreira</em></h2>
+        <p>Cada lançamento, em ordem cronológica. Nenhum estorno.</p>
+      </header>
+
+      <div class="journal">
+        <div class="journal__head">
+          <span>Nº</span><span>Data</span><span>Histórico</span><span>Conta</span><span>D/C</span>
+        </div>
+        <div class="journal__line" aria-hidden="true"><i id="journalProgress"></i></div>
+
+        <article class="entry reveal" data-type="c">
+          <span class="entry__n">001</span><span class="entry__d">jun/2009</span>
+          <div class="entry__h"><h3>Analista de Faturamento</h3><p>Weleda do Brasil — primeira porta de entrada no ciclo receita → caixa.</p></div>
+          <span class="entry__acc">Weleda</span><span class="entry__dc">C</span>
+        </article>
+        <article class="entry reveal" data-type="d">
+          <span class="entry__n">002</span><span class="entry__d">2009–2012</span>
+          <div class="entry__h"><h3>Bacharelado em Ciências Contábeis</h3><p>Anhanguera Educacional — a base técnica de tudo o que veio depois.</p></div>
+          <span class="entry__acc">Formação</span><span class="entry__dc">D</span>
+        </article>
+        <article class="entry reveal" data-type="c">
+          <span class="entry__n">003</span><span class="entry__d">fev/2010</span>
+          <div class="entry__h"><h3>Analista Fiscal</h3><p>Weleda do Brasil — apurações, obrigações e o lado tributário da operação.</p></div>
+          <span class="entry__acc">Weleda</span><span class="entry__dc">C</span>
+        </article>
+        <article class="entry reveal" data-type="c">
+          <span class="entry__n">004</span><span class="entry__d">mai/2011</span>
+          <div class="entry__h"><h3>Analista Contábil Pleno</h3><p>Weleda do Brasil — fechando o ciclo: faturamento, fiscal e contábil.</p></div>
+          <span class="entry__acc">Weleda</span><span class="entry__dc">C</span>
+        </article>
+        <article class="entry reveal" data-type="c">
+          <span class="entry__n">005</span><span class="entry__d">nov/2011</span>
+          <div class="entry__h"><h3>Analista Contábil</h3><p>Lee Hecht Harrison (LHH) — início de uma trajetória de 15 anos na casa.</p></div>
+          <span class="entry__acc">LHH</span><span class="entry__dc">C</span>
+        </article>
+        <article class="entry reveal" data-type="d">
+          <span class="entry__n">006</span><span class="entry__d">jan/2014</span>
+          <div class="entry__h"><h3>Registro de Contador</h3><p>Conselho Regional de Contabilidade do Estado de São Paulo (CRC-SP).</p></div>
+          <span class="entry__acc">Certificação</span><span class="entry__dc">D</span>
+        </article>
+        <article class="entry reveal" data-type="c">
+          <span class="entry__n">007</span><span class="entry__d">jan/2019</span>
+          <div class="entry__h"><h3>Coordenador de Contabilidade</h3><p>LHH — primeira posição de liderança da área.</p></div>
+          <span class="entry__acc">LHH</span><span class="entry__dc">C</span>
+        </article>
+        <article class="entry entry--now reveal" data-type="c">
+          <span class="entry__n">008</span><span class="entry__d">jan/2020 →</span>
+          <div class="entry__h"><h3>Gerente de Contabilidade</h3><p>LHH, São Paulo — responsável pela contabilidade da operação. <span class="pill pill--live">o momento</span></p></div>
+          <span class="entry__acc">LHH</span><span class="entry__dc">C</span>
+        </article>
+        <article class="entry entry--dev reveal" data-type="d">
+          <span class="entry__n">009</span><span class="entry__d">2024 →</span>
+          <div class="entry__h"><h3>Desenvolvimento de sistemas — Etec</h3><p>Web, mobile, embarcados e APIs. O contador começa a escrever o próprio software. <span class="pill pill--dev">em andamento</span></p></div>
+          <span class="entry__acc">Dev</span><span class="entry__dc">D</span>
+        </article>
+
+        <div class="journal__foot reveal">
+          <span>Saldo final</span>
+          <span class="mono">17 anos · 9 lançamentos · 0 estornos</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- LAB -->
+    <section class="section" id="lab">
+      <header class="section__head reveal">
+        <span class="section__num">03</span>
+        <h2>Lab <em>— apps em andamento</em></h2>
+        <p>A carteira de projetos. Cotação em tempo real: commits, aprendizado e muita depuração.</p>
+      </header>
+
+      <div class="filters reveal" role="tablist">
+        <button class="filter is-active" data-filter="all">Todos</button>
+        <button class="filter" data-filter="mobile">Mobile</button>
+        <button class="filter" data-filter="backend">Back-end</button>
+        <button class="filter" data-filter="web">Web</button>
+        <button class="filter" data-filter="embarcados">Embarcados</button>
+      </div>
+
+      <div class="portfolio" id="portfolio"></div>
+    </section>
+
+    <!-- CONSOLE -->
+    <section class="section" id="console">
+      <header class="section__head reveal">
+        <span class="section__num">04</span>
+        <h2>Console <em>interativo</em></h2>
+        <p>Prefere a linha de comando? Digite <code>help</code> e explore.</p>
+      </header>
+      <div class="shell reveal" id="shell">
+        <div class="terminal__bar"><i></i><i></i><i></i><span>lmc@controladoria:~</span></div>
+        <div class="shell__out" id="shellOut" aria-live="polite"></div>
+        <form class="shell__in" id="shellForm" autocomplete="off">
+          <label for="shellInput"><span class="ps1">lmc@controladoria</span>:<span class="ps2">~</span>$</label>
+          <input id="shellInput" type="text" spellcheck="false" aria-label="Comando" />
+        </form>
+        <div class="shell__chips">
+          <button data-cmd="help">help</button>
+          <button data-cmd="whoami">whoami</button>
+          <button data-cmd="balanco">balanco</button>
+          <button data-cmd="stack">stack</button>
+          <button data-cmd="dre">dre</button>
+          <button data-cmd="contato">contato</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section class="section contact" id="contato">
+      <div class="contact__inner reveal">
+        <span class="section__num">05</span>
+        <h2 class="contact__title">Vamos fechar<br /><em>esse balanço</em> juntos?</h2>
+        <p>Contabilidade, controladoria, automação de rotinas financeiras ou um app que precisa entender de números — a conversa começa aqui.</p>
+        <div class="hero__cta">
+          <a href="https://www.linkedin.com/in/luciano-mendes-05887730" target="_blank" rel="noopener" class="btn btn--primary magnetic">Conectar no LinkedIn <span>→</span></a>
+          <a href="https://github.com/lucianocrepaldi" target="_blank" rel="noopener" class="btn btn--ghost magnetic">github.com/lucianocrepaldi</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© <span id="year">2026</span> Luciano Mendes Crepaldi</span>
+    <span class="mono">débito = crédito · HTML/CSS/JS · Vercel</span>
+    <span class="mono muted">* em produção, até onde se sabe.</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
